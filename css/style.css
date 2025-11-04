@@ -51,10 +51,19 @@ header {
 .nav-menu a {
     color: var(--cor-texto-claro);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 750;
     transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
     color: rgba(255, 255, 255, 0.7);
+}
+/* =================================
+   ESTILO DO LOGÓTIPO
+   ================================= */
+.logo-img {
+    /* Isto define uma altura máxima. Podes ajustar este valor! */
+    max-height: 50px; 
+    width: auto; /* Deixa a largura ajustar-se automaticamente */
+    display: block; /* Remove espaços brancos indesejados */
 }
