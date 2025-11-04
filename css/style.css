@@ -68,21 +68,11 @@ header {
     display: block; /* Remove espaços brancos indesejados */
 }
 
-/* =================================
-   SECÇÃO HERO (DESTAQUE)
-   ================================= */
 .hero {
-    /* Define a altura do "hero". 
-       50vh = 50% da altura do ecrã do visitante */
-    min-height: 50vh; 
-    
-    /* Alinhamento com Flexbox para centrar o conteúdo */
     display: flex;
     justify-content: center;
-    align-items: center;
     text-align: center;
-    /* Um padding para o conteúdo não colar nas bordas */
-    padding: 2rem;
+    padding: 4rem 2rem;
 }
 .hero-title {
     font-size: 3rem; /* Tamanho do título principal */
@@ -97,17 +87,61 @@ header {
    BOTÃO CTA (Call to Action)
    ================================= */
 .cta-button {
-    display: inline-block; /* Para o botão aceitar padding */
-    background-color: var(--cor-primaria); /* Fundo rosa-forte */
-    color: var(--cor-texto-claro); /* Texto branco */
-    padding: 1rem 2.5rem; /* Espaçamento interno (altura, largura) */
-    border-radius: 5px; /* Cantos arredondados */
-    text-decoration: none; /* Remove sublinhado do link */
-    font-weight: 700; /* Negrito (como o menu) */
-    font-size: 1rem;
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    padding: 1.2rem 3rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
     transition: background-color 0.3s ease;
 }
 .cta-button:hover {
     /* Escurece um pouco o botão ao passar o rato */
     background-color: #a32439; 
+}
+/* =================================
+   GALERIA DE IMAGENS DO HERO
+   ================================= */
+.hero-image-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+.hero-gallery-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: fallFromTop 0.6s ease-out forwards;
+}
+/* =================================
+   ANIMAÇÕES (Keyframes)
+   ================================= */
+@keyframes fallFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.hero-gallery-image:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.hero-gallery-image:nth-child(3) {
+    animation-delay: 0.4s;
+}
+/* Estilo para o novo Slogan */
+.slogan-destaque {
+    color: var(--cor-primaria); /* Pinta "maWida" e "vida" com o rosa-forte! */
+    font-weight: 900; /* Deixa-as extra-negras */
 }
