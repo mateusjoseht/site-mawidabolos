@@ -1,7 +1,9 @@
+/* Variáveis Globais de Cor */
 :root {
-	--cor-primaria: #c42d46;
-	--cor-secundaria: #fdf0f2;
-	--cor-texto-escuro: #4f2c25;
+  --cor-primaria: #c42d46;    /* Rosa/Vermelho do Logótipo */
+  --cor-secundaria: #fdf0f2;  /* Rosa Claro do Fundo */
+  --cor-texto-escuro: #4f2c25; /* Castanho Escuro do Texto */
+  --cor-texto-claro: #ffffff;  /* Branco */
 }
 
 /* CSS Reset */
@@ -17,3 +19,42 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+/* =================================
+   HEADER E NAVEGAÇÃO (Menu)
+   ================================= */
+
+header {
+    background-color: var(--cor-primaria);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-menu a {
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
