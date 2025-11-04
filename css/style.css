@@ -67,3 +67,47 @@ header {
     width: auto; /* Deixa a largura ajustar-se automaticamente */
     display: block; /* Remove espaços brancos indesejados */
 }
+
+/* =================================
+   SECÇÃO HERO (DESTAQUE)
+   ================================= */
+.hero {
+    /* Define a altura do "hero". 
+       50vh = 50% da altura do ecrã do visitante */
+    min-height: 50vh; 
+    
+    /* Alinhamento com Flexbox para centrar o conteúdo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Um padding para o conteúdo não colar nas bordas */
+    padding: 2rem;
+}
+.hero-title {
+    font-size: 3rem; /* Tamanho do título principal */
+    color: var(--cor-primaria); /* Cor rosa-forte */
+    margin-bottom: 1rem;
+}
+.hero-subtitle {
+    font-size: 1.25rem; /* Tamanho do subtítulo */
+    margin-bottom: 2rem;
+}
+/* =================================
+   BOTÃO CTA (Call to Action)
+   ================================= */
+.cta-button {
+    display: inline-block; /* Para o botão aceitar padding */
+    background-color: var(--cor-primaria); /* Fundo rosa-forte */
+    color: var(--cor-texto-claro); /* Texto branco */
+    padding: 1rem 2.5rem; /* Espaçamento interno (altura, largura) */
+    border-radius: 5px; /* Cantos arredondados */
+    text-decoration: none; /* Remove sublinhado do link */
+    font-weight: 700; /* Negrito (como o menu) */
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+    /* Escurece um pouco o botão ao passar o rato */
+    background-color: #a32439; 
+}
