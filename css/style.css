@@ -14,9 +14,10 @@
 }
 
 body {
-	background-color: var(--cor-secundaria);
-	color: var(--cor-texto-escuro);
-	font-family: Arial, Helvetica, sans-serif;
+    /* Fundo do site passa a ser cinzento claro (neutro) */
+    background-color: var(--cor-neutra); 
+    color: var(--cor-texto-escuro);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* =================================
@@ -73,6 +74,8 @@ header {
     justify-content: center;
     text-align: center;
     padding: 4rem 2rem;
+    background-color: #f2e0d2;
+	margin-bottom: 2rem;
 }
 .hero-title {
     font-size: 3rem; /* Tamanho do título principal */
@@ -104,6 +107,7 @@ header {
 /* =================================
    GALERIA DE IMAGENS DO HERO
    ================================= */
+
 .hero-image-gallery {
     display: flex;
     justify-content: center;
@@ -133,6 +137,7 @@ header {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 .hero-gallery-image:nth-child(2) {
     animation-delay: 0.2s;
@@ -144,4 +149,37 @@ header {
 .slogan-destaque {
     color: var(--cor-primaria); /* Pinta "maWida" e "vida" com o rosa-forte! */
     font-weight: 900; /* Deixa-as extra-negras */
+}
+
+/* =PAINEL DE ENCOMENDA RÁPIDA (CTA BANNER)==================== */
+.cta-banner {
+    background-color: var(--cor-texto-claro); /* Fundo branco/claro */
+    text-align: center;
+    padding: 3rem 2rem;
+	border-top: 1px solid var(--cor-neutra);
+    border-bottom: 1px solid var(--cor-neutra);
+    margin: 0; /* Espaço em cima e em baixo */
+}
+.cta-banner h2 {
+    color: var(--cor-primaria);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+.cta-banner p {
+    margin-bottom: 1.5rem;
+}
+/* Estilo do Botão do WhatsApp */
+.whatsapp-button {
+    display: inline-block;
+    background-color: #25D366; /* Verde WhatsApp */
+    color: var(--cor-texto-claro);
+    padding: 1rem 2.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+.whatsapp-button:hover {
+    background-color: #128C7E; /* Verde escuro no hover */
 }
