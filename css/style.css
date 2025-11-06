@@ -1,7 +1,7 @@
 /* Variáveis Globais de Cor */
 :root {
   --cor-primaria: #c42d46;    /* Rosa/Vermelho do Logótipo */
-  --cor-secundaria: #fdf0f2;  /* Rosa Claro do Fundo */
+  --cor-secundaria: #f2e0d2;  /* Rosa Claro do Fundo */
   --cor-texto-escuro: #4f2c25; /* Castanho Escuro do Texto */
   --cor-texto-claro: #ffffff;  /* Branco */
 }
@@ -15,7 +15,7 @@
 
 body {
     /* Fundo do site passa a ser cinzento claro (neutro) */
-    background-color: var(--cor-neutra); 
+    background-color: var(--cor-secundaria); 
     color: var(--cor-texto-escuro);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -153,7 +153,7 @@ header {
 
 /* =PAINEL DE ENCOMENDA RÁPIDA (CTA BANNER)==================== */
 .cta-banner {
-    background-color: var(--cor-texto-claro); /* Fundo branco/claro */
+    background-color: var(--cor-secundaria); 
     text-align: center;
     padding: 3rem 2rem;
 	border-top: 1px solid var(--cor-neutra);
@@ -182,4 +182,185 @@ header {
 }
 .whatsapp-button:hover {
     background-color: #128C7E; /* Verde escuro no hover */
+}
+
+/* =================================
+   RODAPÉ (FOOTER)
+   ================================= */
+footer {
+    background-color: var(--cor-primaria); /* Fundo rosa forte */
+    color: var(--cor-texto-claro); /* Texto branco */
+    padding-top: 3rem;
+    font-size: 0.9rem;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.footer-col {
+    width: 300px;
+    margin: 1rem;
+}
+.footer-col h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--cor-texto-claro);
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 0.5rem;
+}
+.footer-col p {
+    margin-bottom: 0.5rem;
+	font-weight: 600;
+}
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-col a {
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-left: 1.2rem;
+	font-weight: 600;
+}
+.footer-col a:hover {
+    color: var(--cor-secundaria);
+}
+.footer-bottom {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #a32439; /* Um rosa ligeiramente mais escuro */
+    position: relative; /* Para o botão voltar ao topo */
+}
+
+/* Ícones do Rodapé */
+.footer-col i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Ícones Sociais */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    /* NOVO: Garante que não há margem duplicada */
+    margin-top: 0; 
+}
+
+.social-icons a {
+    /* Restaura a forma e o fundo */
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%; /* Faz o círculo */
+
+    /* Centralização Forçada */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    line-height: 0;
+	transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+}
+
+.social-icons a i {
+    margin: 0;
+    font-size: 1.2rem;
+    display: block;
+    line-height: 1;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    background-color: var(--cor-secundaria); 
+    color: var(--cor-primaria);
+}
+
+
+.footer-col a::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(-5px);
+}
+
+.footer-col a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Botão Voltar ao Topo */
+.back-to-top {
+    position: absolute;
+    right: 2rem;
+    top: -1.5rem;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .footer-col {
+        width: 100%;
+        max-width: 400px;
+        margin: 1rem 0;
+    }
+
+    .footer-col a {
+        padding-left: 0; /* Remove o padding dos links em mobile */
+    }
+
+    .footer-col a::before {
+        display: none; /* Remove as setas em mobile */
+    }
+
+    .back-to-top {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .back-to-top:hover {
+        transform: translateX(50%) translateY(-3px);
+    }
+}
+.social-icons a::before {
+    content: none;
+    display: none;
+}
+/* Espaçamento entre o último parágrafo de contacto e os ícones sociais */
+.footer-col.contact p:last-of-type {
+    margin-bottom: 1.5rem; 
 }
