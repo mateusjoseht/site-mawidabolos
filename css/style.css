@@ -20,6 +20,13 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Animação de aparição global (suave) */
+@keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+body { animation: pageFadeIn 420ms ease both; }
+
 /* =================================
    HEADER E NAVEGAÇÃO (Menu)
    ================================= */
@@ -55,6 +62,42 @@ header {
     font-weight: 750;
     transition: color 0.3s ease;
 }
+
+/* Hamburger menu button (hidden on desktop) */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+}
+.nav-toggle .hamburger {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--cor-texto-claro);
+    position: relative;
+}
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 26px;
+    height: 2px;
+    background: var(--cor-texto-claro);
+}
+.nav-toggle .hamburger::before { top: -8px; }
+.nav-toggle .hamburger::after { top: 8px; }
+
+/* Touch-target maior para links (mobile) */
+.nav-menu a {
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
 
 .nav-menu a:hover {
     color: rgba(255, 255, 255, 0.7);
@@ -124,6 +167,13 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     opacity: 0;
     animation: fallFromTop 0.6s ease-out forwards;
+}
+
+/* Pequena interacção ao passar o dedo / rato nas imagens do hero */
+.hero-gallery-image:hover,
+.hero-gallery-image:focus {
+    transform: scale(1.03);
+    transition: transform 220ms ease;
 }
 /* =================================
    ANIMAÇÕES (Keyframes)
@@ -247,43 +297,7 @@ footer {
     font-size: 1.1rem;
 }
 
-/* Ícones Sociais */
-.social-icons {
-    display: flex;
-    gap: 1rem;
-    /* NOVO: Garante que não há margem duplicada */
-    margin-top: 0; 
-}
-
-.social-icons a {
-    /* Restaura a forma e o fundo */
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%; /* Faz o círculo */
-
-    /* Centralização Forçada */
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    line-height: 0;
-	transition: all 0.3s ease;
-    margin: 0;
-    padding: 0;
-}
-
-.social-icons a i {
-    margin: 0;
-    font-size: 1.2rem;
-    display: block;
-    line-height: 1;
-}
-
-.social-icons a:hover {
-    transform: translateY(-3px);
-    background-color: var(--cor-secundaria); 
-    color: var(--cor-primaria);
-}
+/* Ícones Sociais (removidos) */
 
 
 .footer-col a::before {
@@ -356,11 +370,330 @@ footer {
         transform: translateX(50%) translateY(-3px);
     }
 }
-.social-icons a::before {
-    content: none;
+/* remova social-icons a::before se não for usada */
+/* Espaçamento entre o último parágrafo de contacto e os ícones sociais */
+.footer-col.contact p:last-of-type { /* removido (código morto) */ }
+
+/* =================================
+   PÁGINA DE PRODUTOS
+   ================================= */
+
+.product-header {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--cor-secundaria);
+}
+
+.product-header h1 {
+    color: var(--cor-primaria);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-category {
+    max-width: 1200px;
+    margin: 3rem auto; /* Centraliza a secção */
+    padding: 2rem;
+    background-color: var(--cor-texto-claro);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.product-category h2 {
+    font-size: 2rem;
+    color: var(--cor-primaria);
+    border-bottom: 3px solid var(--cor-secundaria);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-category h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--cor-texto-escuro);
+}
+
+/* Grelha de Cartões de Produto */
+.product-grid {
+    display: grid;
+    /* Cria colunas automáticas de 300px, 
+       que se ajustam ao ecrã */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden; /* Garante que a imagem não "vaze" */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px; /* Igual aos hero images para ter o mesmo visual */
+    object-fit: cover; /* Garante que a foto preenche o espaço */
+}
+
+.product-card h4 {
+    font-size: 1.2rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+    color: var(--cor-primaria);
+}
+
+.product-card p {
+    padding: 0 1rem 1rem 1rem;
+    font-size: 0.95rem;
+}
+
+.product-card .price {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--cor-texto-escuro);
+}
+
+/* Estilos para a secção 'Monte o seu Bolo' */
+.festa-guide p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.festa-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.festa-option-card {
+    background: var(--cor-texto-claro);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.festa-option-card h3 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--cor-primaria);
+}
+
+.festa-option-card ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.festa-option-card li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.festa-note {
+    font-weight: 700;
+    color: var(--cor-primaria);
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+
+/* Galeria de imagens para Bolos de Festa */
+.festa-gallery {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0 2rem 0;
+    justify-content: center;
+}
+.festa-thumb {
+    width: 200px;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.festa-thumb img {
+        width: 100%;
+        height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Animação discreta para mini thumbs (flutuar) */
+@keyframes floatSmall {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+.festa-thumb { animation: floatSmall 6s ease-in-out infinite; }
+
+/* Botão Encomendar nos cartões */
+.order-button {
+    display: inline-block;
+    margin: 0.5rem 1rem 1rem 1rem;
+    padding: 0.6rem 1rem;
+    background: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 700;
+}
+.order-button:hover {
+    background: #a32439;
+}
+
+/* =================================
+   ESTILOS DOS CARDS INTERATIVOS
+   ================================= */
+/* Estilo para o novo Dropdown (<select>) */
+.product-card .product-options {
+    display: block;
+    width: calc(100% - 2rem); /* Ocupa a largura do card, menos o padding */
+    margin: 0.5rem 1rem 1rem 1rem;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cor-texto-escuro);
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    cursor: pointer;
+}
+/* Estilo para o Botão "Encomendar" */
+.order-button {
+    display: inline-block;
+    /* Ocupa a largura do card, menos o padding */
+    width: calc(100% - 2rem); 
+    margin: 0.5rem 1rem 1rem 1rem;
+    padding: 0.8rem 1rem;
+    background: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+.order-button:hover {
+    background: #a32439; /* Cor de hover escura */
+}
+
+/* Melhor foco para keyboard users */
+.order-button:focus, .tab-button:focus, .product-options:focus, .cta-button:focus, .whatsapp-button:focus {
+        outline: 3px solid rgba(196,45,70,0.18);
+        outline-offset: 3px;
+}
+
+/* Acessibilidade: reduzir animações quando preferências do usuário pedem isso */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}
+
+/* =================================
+     RESPONSIVIDADE / MOBILE-FIRST
+     ================================= */
+/* Header e navegação: adaptações para ecrãs pequenos */
+@media (max-width: 900px) {
+    .navbar { padding: 1rem; }
+    .nav-menu { gap: 1rem; font-size: 0.95rem; }
+    .logo-img { max-height: 44px; }
+}
+
+@media (max-width: 768px) {
+    header { padding: 1rem; }
+    .hero { padding: 3rem 1rem; }
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-gallery-image { width: 160px; height: 160px; }
+
+        /* Nav: mantém os itens em linha no mobile, permite quebra e centraliza */
+        .nav-menu { flex-direction: row; gap: 0.75rem; flex-wrap: wrap; justify-content: center; align-items: center; }
+
+    /* Cards: ocupa coluna inteira em mobile para leitura confortável */
+    .product-grid { grid-template-columns: 1fr; }
+
+    .product-category { padding: 1rem; margin: 1.25rem; }
+
+    /* Garante botões com touch-target confortável */
+    .order-button, .product-card .product-options { width: calc(100% - 2rem); font-size: 1.05rem; }
+}
+
+@media (max-width: 420px) {
+    .hero-gallery-image { width: 120px; height: 120px; }
+    .hero-title { font-size: 1.6rem; }
+    .cta-button, .whatsapp-button { padding: 0.9rem 1.6rem; font-size: 1rem; }
+}
+
+/* =================================
+   NAVEGAÇÃO POR ABAS (PÁG. PRODUTOS)
+   ================================= */
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: -1.5rem; 
+    position: relative;
+    z-index: 2; 
+}
+.tab-button {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-texto-escuro);
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.tab-button:hover {
+    background-color: #f9f9f9;
+    transform: translateY(-2px);
+}
+.tab-button.active {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border-color: var(--cor-primaria);
+}
+.tab-content {
     display: none;
 }
-/* Espaçamento entre o último parágrafo de contacto e os ícones sociais */
-.footer-col.contact p:last-of-type {
-    margin-bottom: 1.5rem; 
+.tab-content.active {
+    display: block;
 }
+
+/* Mobile-specific menu behavior: show hamburger and collapse menu */
+@media (max-width: 768px) {
+    .nav-toggle { display: inline-flex; align-items: center; }
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--cor-primaria);
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        transform-origin: top;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        display: none; /* hidden by default, toggled via .open class */
+    }
+    .nav-menu.open {
+        display: flex;
+    }
+    .nav-menu a { color: var(--cor-texto-claro); }
+    .nav-toggle .hamburger,
+    .nav-toggle .hamburger::before,
+    .nav-toggle .hamburger::after { background: var(--cor-texto-claro); }
+}
+
+
