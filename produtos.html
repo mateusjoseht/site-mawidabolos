@@ -15,6 +15,9 @@
         <img src="img/logo.png" alt="Logótipo maWida Bolos Artesanais" class="logo-img">
     </a>
         </div>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
         <ul class="nav-menu">
             <li><a href="index.html">Início</a></li>
             <li><a href="produtos.html">Produtos</a></li>
@@ -25,6 +28,190 @@
 </header>
 
     <main>
+        <div class="product-header">
+            <h1>O Nosso Cardápio</h1>
+            <p>Conheça todas as nossas delícias, feitas artesanalmente para si.</p>
+        </div>
+
+        <div class="tab-navigation">
+            <button class="tab-button active" data-tab="tab-festa">Bolos de Festa</button>
+            <button class="tab-button" data-tab="tab-caseirinhos">Caseirinhos</button>
+            <button class="tab-button" data-tab="tab-rolo">Bolo de Rolo</button>
+        </div>
+
+        <div id="tab-festa" class="tab-content active">
+
+        <section class="product-category">
+            <h2>Bolos de Festa</h2>
+            <div class="festa-guide">
+                <p>Monte o seu bolo! Escolha a sua cobertura, massa, recheio e tamanho. Temos também opções para "turbinar" o seu bolo e decoração personalizada.</p>
+                
+                <!-- Galeria de imagens dos Bolos de Festa (2-3 imagens) -->
+                <div class="festa-gallery">
+                    <figure class="festa-thumb"><img src="img/hero-bolo-1.jpg" alt="Bolo Festa 1"></figure>
+                    <figure class="festa-thumb"><img src="img/hero-bolo-2.jpg" alt="Bolo Festa 2"></figure>
+                    <figure class="festa-thumb"><img src="img/hero-bolo-3.jpg" alt="Bolo Festa 3"></figure>
+                </div>
+
+                <div class="festa-options-grid">
+                    <div class="festa-option-card">
+                        <h3>Coberturas</h3>
+                        <ul>
+                            <li>Chantininho (R$ 85,90/kg)</li>
+                            <li>Ganache (R$ 99,90/kg)</li>
+                        </ul>
+                    </div>
+                    <div class="festa-option-card">
+                        <h3>Massas</h3>
+                        <ul>
+                            <li>Baunilha</li>
+                            <li>Chocolate</li>
+                            <li>Red Velvet</li>
+                        </ul>
+                    </div>
+                    <div class="festa-option-card">
+                        <h3>Recheios</h3>
+                        <ul>
+                            <li>Brigadeiro Branco</li>
+                            <li>Brigadeiro Tradicional</li>
+                            <li>Doce de Leite</li>
+                            <li>Bicho de pé</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="festa-note">*Papelaria e decoração: Valor a combinar.</p>
+            </div>
+        </section>
+        </div>
+
+        <div id="tab-caseirinhos" class="tab-content">
+        <section class="product-category">
+            <h2>Caseirinhos</h2>
+            
+            <h3>Sem Cobertura</h3>
+                <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/hero-bolo-1.jpg" alt="Bolo Caseirinho">
+                    <select class="product-options" aria-label="Escolha o sabor">
+                        <option value="Formigueiro">Formigueiro</option>
+                        <option value="Fubá">Fubá</option>
+                        <option value="Iogurte c/ Canela">Iogurte c/ Canela</option>
+                        <option value="Mesclado">Mesclado</option>
+                    </select>
+                    <p class="price">R$ 24,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+                <div class="product-card">
+                    <img src="img/hero-bolo-2.jpg" alt="Bolo Caseirinho">
+                    <select class="product-options" aria-label="Escolha o sabor">
+                        <option value="Fubá c/ Goiabada">Fubá c/ Goiabada</option>
+                        <option value="Goiabinha">Goiabinha</option>
+                        <option value="Gotas de Chocolate">Gotas de Chocolate</option>
+                        <option value="Laranja c/ Calda">Laranja c/ Calda</option>
+                        <option value="Milho">Milho</option>
+                        <option value="Banana (polvilhado com canela)">Banana c/ canela</option>
+                    </select>
+                    <p class="price">R$ 29,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+            </div>
+
+            <h3>Com Cobertura</h3>
+                <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/hero-bolo-3.jpg" alt="Bolo Caseirinho">
+                    <select class="product-options" aria-label="Escolha o sabor">
+                        <option value="Cenoura c/ Chocolate">Cenoura c/ Chocolate</option>
+                        <option value="Chocolatudo">Chocolatudo</option>
+                        <option value="Churros">Churros</option>
+                        <option value="Coco c/ Beijinho">Coco c/ Beijinho</option>
+                        <option value="Limão Siciliano">Limão Siciliano</option>
+                    </select>
+                    <p class="price">R$ 35,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+                <div class="product-card">
+                    <img src="img/hero-bolo-1.jpg" alt="Bolo Caseirinho">
+                    <select class="product-options" aria-label="Escolha o sabor">
+                        <option value="Choconinho">Choconinho</option>
+                        <option value="Ninho">Ninho</option>
+                        <option value="Brigadeiro de Ninho c/ Morango">Brigadeiro de Ninho c/ Morango</option>
+                    </select>
+                    <p class="price">R$ 39,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+                      <div class="product-card">
+                          <img src="img/hero-bolo-2.jpg" alt="Bolo Caseirinho">
+                          <h4>Ninho com Nutella</h4>
+                    <p class="price">R$ 42,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+            </div>
+
+            <h3>Poolcakes</h3>
+                <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/hero-bolo-3.jpg" alt="Poolcake">
+                    <h4>Ninho com Frutas Vermelhas</h4>
+                    <p class="price">R$ 42,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+                <div class="product-card">
+                    <img src="img/hero-bolo-1.jpg" alt="Poolcake">
+                    <h4>Pistache</h4>
+                    <p class="price">R$ 48,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <div id="tab-rolo" class="tab-content">
+        <section class="product-category">
+            <h2>Bolo de Rolo (O mais pedido)</h2>
+            
+            <h3>Tradicionais</h3>
+                <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/hero-bolo-2.jpg" alt="Bolo de Rolo">
+                    <h4>Goiabada</h4>
+                    <p>apx 500g: R$ 33,00</p>
+                    <p>apx 1,0kg: R$ 60,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+                <div class="product-card">
+                    <img src="img/hero-bolo-3.jpg" alt="Bolo de Rolo">
+                    <h4>Doce de Leite</h4>
+                    <p>apx 500g: R$ 38,00</p>
+                    <p>apx 1,0kg: R$ 70,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+            </div>
+
+            <h3>Gourmet</h3>
+                <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/hero-bolo-1.jpg" alt="Bolo de Rolo Gourmet">
+                    <select class="product-options" aria-label="Escolha o sabor">
+                        <option value="Bolo de Rolo - Café">Café</option>
+                        <option value="Bolo de Rolo - Chocolate">Chocolate</option>
+                        <option value="Bolo de Rolo - Maracujá">Maracujá</option>
+                        <option value="Bolo de Rolo - Red Velvet">Red Velvet</option>
+                    </select>
+                    <p>apx 500g: R$ 50,00</p>
+                    <p>apx 1,0kg: R$ 90,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+                <div class="product-card">
+                    <img src="img/hero-bolo-2.jpg" alt="Bolo de Rolo Gourmet">
+                    <h4>Gourmet com Cobertura</h4>
+                    <p>apx 500g: R$ 55,00</p>
+                    <p>apx 1,0kg: R$ 99,00</p>
+                    <a href="#" class="order-button">Encomendar</a>
+                </div>
+            </div>
+        </section>
+        </div>
     </main>
 
     <footer>
@@ -44,7 +231,8 @@
     <div class="footer-col contact">
         <h3>Contato</h3>
         <p><i class="far fa-clock"></i>Seg-Sex (08h-18h) | Sáb (08h-12h)</p>
-        <p><i class="fas fa-map-marker-alt"></i>Rosarinho, Recife</p>
+        <p><i class="fas fa-map-marker-alt"></i>Rua Dr. José Maria, 600.
+          <br> Rosarinho, Recife</p>
         <p><i class="fab fa-whatsapp"></i>+55 81 3071-7968</p>
         <p><i class="fab fa-instagram"></i>@mawidabolosartesanais</p>
     </div>
@@ -56,5 +244,6 @@
     </a>
 </div>
     </footer>
-  </body>
+        <script src="js/main.js" defer></script>
+    </body>
 </html>
