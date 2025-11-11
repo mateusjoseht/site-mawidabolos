@@ -15,10 +15,10 @@
         <img src="img/logo.png" alt="Logótipo maWida Bolos Artesanais" class="logo-img">
     </a>
         </div>
-        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+    <button type="button" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-menu">
             <span class="hamburger"></span>
         </button>
-        <ul class="nav-menu">
+        <ul id="primary-menu" class="nav-menu">
             <li><a href="index.html">Início</a></li>
             <li><a href="produtos.html">Produtos</a></li>
             <li><a href="sobre.html">Sobre Nós</a></li>
@@ -33,13 +33,13 @@
             <p>Conheça todas as nossas delícias, feitas artesanalmente para si.</p>
         </div>
 
-        <div class="tab-navigation">
-            <button class="tab-button active" data-tab="tab-festa">Bolos de Festa</button>
-            <button class="tab-button" data-tab="tab-caseirinhos">Caseirinhos</button>
-            <button class="tab-button" data-tab="tab-rolo">Bolo de Rolo</button>
+        <div class="tab-navigation" role="tablist" aria-label="Categorias de produtos">
+            <button id="tab-btn-festa" class="tab-button active" role="tab" aria-selected="true" aria-controls="tab-festa" data-tab="tab-festa">Bolos de Festa</button>
+            <button id="tab-btn-caseirinhos" class="tab-button" role="tab" aria-selected="false" aria-controls="tab-caseirinhos" data-tab="tab-caseirinhos">Caseirinhos</button>
+            <button id="tab-btn-rolo" class="tab-button" role="tab" aria-selected="false" aria-controls="tab-rolo" data-tab="tab-rolo">Bolo de Rolo</button>
         </div>
 
-        <div id="tab-festa" class="tab-content active">
+    <div id="tab-festa" class="tab-content active" role="tabpanel" aria-labelledby="tab-btn-festa" tabindex="0">
 
         <section class="product-category">
             <h2>Bolos de Festa</h2>
@@ -84,7 +84,7 @@
         </section>
         </div>
 
-        <div id="tab-caseirinhos" class="tab-content">
+    <div id="tab-caseirinhos" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-caseirinhos" tabindex="0" hidden>
         <section class="product-category">
             <h2>Caseirinhos</h2>
             
@@ -99,7 +99,7 @@
                         <option value="Mesclado">Mesclado</option>
                     </select>
                     <p class="price">R$ 24,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
                 <div class="product-card">
                     <img src="img/hero-bolo-2.jpg" alt="Bolo Caseirinho">
@@ -112,7 +112,7 @@
                         <option value="Banana (polvilhado com canela)">Banana c/ canela</option>
                     </select>
                     <p class="price">R$ 29,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
                         <option value="Limão Siciliano">Limão Siciliano</option>
                     </select>
                     <p class="price">R$ 35,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
                 <div class="product-card">
                     <img src="img/hero-bolo-1.jpg" alt="Bolo Caseirinho">
@@ -138,13 +138,13 @@
                         <option value="Brigadeiro de Ninho c/ Morango">Brigadeiro de Ninho c/ Morango</option>
                     </select>
                     <p class="price">R$ 39,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
                       <div class="product-card">
                           <img src="img/hero-bolo-2.jpg" alt="Bolo Caseirinho">
                           <h4>Ninho com Nutella</h4>
                     <p class="price">R$ 42,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
             </div>
 
@@ -154,19 +154,19 @@
                     <img src="img/hero-bolo-3.jpg" alt="Poolcake">
                     <h4>Ninho com Frutas Vermelhas</h4>
                     <p class="price">R$ 42,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
                 <div class="product-card">
                     <img src="img/hero-bolo-1.jpg" alt="Poolcake">
                     <h4>Pistache</h4>
                     <p class="price">R$ 48,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
             </div>
         </section>
         </div>
 
-        <div id="tab-rolo" class="tab-content">
+    <div id="tab-rolo" class="tab-content" role="tabpanel" aria-labelledby="tab-btn-rolo" tabindex="0" hidden>
         <section class="product-category">
             <h2>Bolo de Rolo (O mais pedido)</h2>
             
@@ -177,14 +177,14 @@
                     <h4>Goiabada</h4>
                     <p>apx 500g: R$ 33,00</p>
                     <p>apx 1,0kg: R$ 60,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
                 <div class="product-card">
                     <img src="img/hero-bolo-3.jpg" alt="Bolo de Rolo">
                     <h4>Doce de Leite</h4>
                     <p>apx 500g: R$ 38,00</p>
                     <p>apx 1,0kg: R$ 70,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
             </div>
 
@@ -200,14 +200,14 @@
                     </select>
                     <p>apx 500g: R$ 50,00</p>
                     <p>apx 1,0kg: R$ 90,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
                 <div class="product-card">
                     <img src="img/hero-bolo-2.jpg" alt="Bolo de Rolo Gourmet">
                     <h4>Gourmet com Cobertura</h4>
                     <p>apx 500g: R$ 55,00</p>
                     <p>apx 1,0kg: R$ 99,00</p>
-                    <a href="#" class="order-button">Encomendar</a>
+                    <button class="order-button" type="button">Encomendar</button>
                 </div>
             </div>
         </section>
@@ -239,9 +239,6 @@
 </div>
 <div class="footer-bottom">
     <p>&copy; 2025 maWida Bolos Artesanais. Todos os direitos reservados.</p>
-    <a href="#" class="back-to-top" title="Voltar ao topo">
-        <i class="fas fa-chevron-up"></i>
-    </a>
 </div>
     </footer>
         <script src="js/main.js" defer></script>

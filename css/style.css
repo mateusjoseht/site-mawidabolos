@@ -13,11 +13,18 @@
 	box-sizing: border-box;
 }
 
+/* Layout base: garante rodapé colado ao fundo (sticky footer) */
+html { height: 100%; }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+footer { margin-top: auto; flex-shrink: 0; }
+.footer-bottom { width: 100%; }
+
 body {
-    /* Fundo do site passa a ser cinzento claro (neutro) */
     background-color: var(--cor-secundaria); 
     color: var(--cor-texto-escuro);
     font-family: Arial, Helvetica, sans-serif;
+    animation: pageFadeIn 420ms ease both;
 }
 
 /* Animação de aparição global (suave) */
@@ -25,8 +32,6 @@ body {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
 }
-body { animation: pageFadeIn 420ms ease both; }
-
 /* =================================
    HEADER E NAVEGAÇÃO (Menu)
    ================================= */
@@ -35,6 +40,8 @@ header {
     background-color: var(--cor-primaria);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1.5rem 2rem;
+    /* Positioning context for absolutely positioned mobile menu */
+    position: relative;
 }
 
 .navbar {
@@ -195,19 +202,13 @@ header {
 .hero-gallery-image:nth-child(3) {
     animation-delay: 0.4s;
 }
-/* Estilo para o novo Slogan */
-.slogan-destaque {
-    color: var(--cor-primaria); /* Pinta "maWida" e "vida" com o rosa-forte! */
-    font-weight: 900; /* Deixa-as extra-negras */
-}
+/* (Removido .slogan-destaque não utilizado) */
 
 /* =PAINEL DE ENCOMENDA RÁPIDA (CTA BANNER)==================== */
 .cta-banner {
     background-color: var(--cor-secundaria); 
     text-align: center;
     padding: 3rem 2rem;
-	border-top: 1px solid var(--cor-neutra);
-    border-bottom: 1px solid var(--cor-neutra);
     margin: 0; /* Espaço em cima e em baixo */
 }
 .cta-banner h2 {
@@ -314,29 +315,7 @@ footer {
     transform: translateX(0);
 }
 
-/* Botão Voltar ao Topo */
-.back-to-top {
-    position: absolute;
-    right: 2rem;
-    top: -1.5rem;
-    background-color: var(--cor-primaria);
-    color: var(--cor-texto-claro);
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.back-to-top:hover {
-    transform: translateY(-3px);
-    background-color: var(--cor-secundaria);
-    color: var(--cor-primaria);
-}
+/* (Removido .back-to-top não utilizado) */
 
 /* Media Queries para Responsividade */
 @media (max-width: 768px) {
@@ -361,18 +340,9 @@ footer {
         display: none; /* Remove as setas em mobile */
     }
 
-    .back-to-top {
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    .back-to-top:hover {
-        transform: translateX(50%) translateY(-3px);
-    }
+    /* (Removidos estilos de .back-to-top não utilizados) */
 }
-/* remova social-icons a::before se não for usada */
-/* Espaçamento entre o último parágrafo de contacto e os ícones sociais */
-.footer-col.contact p:last-of-type { /* removido (código morto) */ }
+/* Espaçamento entre o último parágrafo de contacto e os ícones sociais (removido) */
 
 /* =================================
    PÁGINA DE PRODUTOS
@@ -533,20 +503,7 @@ footer {
 }
 .festa-thumb { animation: floatSmall 6s ease-in-out infinite; }
 
-/* Botão Encomendar nos cartões */
-.order-button {
-    display: inline-block;
-    margin: 0.5rem 1rem 1rem 1rem;
-    padding: 0.6rem 1rem;
-    background: var(--cor-primaria);
-    color: var(--cor-texto-claro);
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: 700;
-}
-.order-button:hover {
-    background: #a32439;
-}
+/* (Consolidated order button styles appear later) */
 
 /* =================================
    ESTILOS DOS CARDS INTERATIVOS
@@ -568,21 +525,31 @@ footer {
 /* Estilo para o Botão "Encomendar" */
 .order-button {
     display: inline-block;
-    /* Ocupa a largura do card, menos o padding */
-    width: calc(100% - 2rem); 
+    width: calc(100% - 2rem);
     margin: 0.5rem 1rem 1rem 1rem;
-    padding: 0.8rem 1rem;
-    background: var(--cor-primaria);
+    padding: 0.85rem 1.1rem;
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, #a32439 100%);
     color: var(--cor-texto-claro);
-    text-decoration: none;
-    border-radius: 6px;
+    border: none; /* remove borda escura */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    border-radius: 8px;
     font-weight: 700;
     text-align: center;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
-.order-button:hover {
-    background: #a32439; /* Cor de hover escura */
+.order-button:hover,
+.order-button:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    filter: brightness(1.08);
+}
+.order-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    filter: brightness(0.95);
 }
 
 /* Melhor foco para keyboard users */
@@ -670,7 +637,7 @@ footer {
     display: block;
 }
 
-/* Mobile-specific menu behavior: show hamburger and collapse menu */
+/* Mobile-specific menu behavior: show hamburger and collapse menu with animation */
 @media (max-width: 768px) {
     .nav-toggle { display: inline-flex; align-items: center; }
     .nav-menu {
@@ -678,6 +645,7 @@ footer {
         top: 100%;
         left: 0;
         right: 0;
+        z-index: 999; /* ensure menu sits above page content */
         background: var(--cor-primaria);
         padding: 1rem 1.5rem;
         flex-direction: column;
@@ -685,15 +653,23 @@ footer {
         transform-origin: top;
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
-        display: none; /* hidden by default, toggled via .open class */
+        /* Animated open/close using max-height + opacity (keeps layout stable) */
+        max-height: 0;
+        overflow: hidden;
+        display: flex;
+        opacity: 0;
+        transition: max-height 320ms cubic-bezier(.2,.9,.2,1), opacity 220ms ease;
     }
     .nav-menu.open {
-        display: flex;
+        max-height: 480px; /* enough to show the menu items; adjust if needed */
+        opacity: 1;
     }
     .nav-menu a { color: var(--cor-texto-claro); }
     .nav-toggle .hamburger,
     .nav-toggle .hamburger::before,
     .nav-toggle .hamburger::after { background: var(--cor-texto-claro); }
+    /* Quando o menu está aberto, bloqueia scroll do body */
+    body.nav-open { overflow: hidden; }
 }
 
 
