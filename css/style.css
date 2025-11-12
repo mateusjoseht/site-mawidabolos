@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
+
 /* Variáveis Globais de Cor */
 :root {
   --cor-primaria: #c42d46;    /* Rosa/Vermelho do Logótipo */
@@ -133,8 +135,10 @@ header {
     margin-bottom: 1rem;
 }
 .hero-subtitle {
-    font-size: 1.25rem; /* Tamanho do subtítulo */
+    font-size: 1.6rem; /* Aumentado para maior legibilidade */
     margin-bottom: 2rem;
+    font-weight: 800; /* Mais grosso, semelhante ao título principal */
+    color: var(--cor-primaria); /* tornar mais viva/mais clara conforme pedido */
 }
 /* =================================
    BOTÃO CTA (Call to Action)
@@ -218,6 +222,9 @@ header {
 }
 .cta-banner p {
     margin-bottom: 1.5rem;
+    font-size: 1.25rem; /* Aumentado e destacado */
+    font-weight: 800;
+    color: var(--cor-primaria);
 }
 /* Estilo do Botão do WhatsApp */
 .whatsapp-button {
@@ -360,6 +367,22 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+.product-header p {
+    /* Make the subtitle stand out slightly more */
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgba(79,44,37,0.95);
+    margin-top: 0.5rem;
+}
+
+/* Use a more distinctive serif for product headings and tabs */
+.product-header p,
+.product-category h2,
+.tab-button,
+.product-card h4 {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+}
+
 .product-category {
     max-width: 1200px;
     margin: 3rem auto; /* Centraliza a secção */
@@ -375,6 +398,8 @@ footer {
     border-bottom: 3px solid var(--cor-secundaria);
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.2px;
 }
 
 .product-category h3 {
@@ -413,9 +438,12 @@ footer {
 }
 
 .product-card h4 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     padding: 1rem 1rem 0.5rem 1rem;
     color: var(--cor-primaria);
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    font-family: Georgia, 'Times New Roman', serif;
 }
 
 .product-card p {
@@ -509,18 +537,43 @@ footer {
    ESTILOS DOS CARDS INTERATIVOS
    ================================= */
 /* Estilo para o novo Dropdown (<select>) */
+
 .product-card .product-options {
+    /* Visible, subtly bordered dropdown so users know it's interactive */
     display: block;
-    width: calc(100% - 2rem); /* Ocupa a largura do card, menos o padding */
-    margin: 0.5rem 1rem 1rem 1rem;
-    padding: 0.75rem 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--cor-texto-escuro);
-    background-color: #fff;
-    border: 2px solid #eee;
+    width: calc(100% - 2rem);
+    margin: 0.5rem 1rem 0.75rem 1rem;
+    padding: 0.6rem 1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    background-color: #ffffff; /* white so the control is visible */
+    border: 1px solid rgba(0,0,0,0.06); /* subtle border */
     border-radius: 6px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     cursor: pointer;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    /* Add a subtle chevron to indicate dropdown affordance */
+    background-image: linear-gradient(45deg, transparent 50%, var(--cor-primaria) 50%),
+                      linear-gradient(135deg, var(--cor-primaria) 50%, transparent 50%);
+    background-position: calc(100% - 1rem) calc(1em + 2px), calc(100% - 0.8rem) calc(1em + 2px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.4rem; /* make room for chevron */
+}
+
+.product-card .product-options:focus {
+    outline: 3px solid rgba(196,45,70,0.18);
+    outline-offset: 3px;
+}
+
+/* Ensure the options inside the native dropdown use the same font where supported */
+.product-card .product-options option {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    color: var(--cor-primaria);
 }
 /* Estilo para o Botão "Encomendar" */
 .order-button {
@@ -612,7 +665,7 @@ footer {
 .tab-button {
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--cor-texto-escuro);
     background-color: #fff;
     border: 2px solid #eee;
@@ -620,6 +673,7 @@ footer {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    letter-spacing: 0.3px;
 }
 .tab-button:hover {
     background-color: #f9f9f9;
