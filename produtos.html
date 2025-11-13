@@ -53,33 +53,119 @@
                     <figure class="festa-thumb"><img src="img/hero-bolo-3.jpg" alt="Bolo Festa 3"></figure>
                 </div>
 
-                <div class="festa-options-grid">
-                    <div class="festa-option-card">
-                        <h3>Coberturas</h3>
-                        <ul>
-                            <li>Chantininho (R$ 85,90/kg)</li>
-                            <li>Ganache (R$ 99,90/kg)</li>
-                        </ul>
-                    </div>
-                    <div class="festa-option-card">
-                        <h3>Massas</h3>
-                        <ul>
-                            <li>Baunilha</li>
-                            <li>Chocolate</li>
-                            <li>Red Velvet</li>
-                        </ul>
-                    </div>
-                    <div class="festa-option-card">
-                        <h3>Recheios</h3>
-                        <ul>
-                            <li>Brigadeiro Branco</li>
-                            <li>Brigadeiro Tradicional</li>
-                            <li>Doce de Leite</li>
-                            <li>Bicho de pé</li>
-                        </ul>
+                <!-- Configurador de Bolo (form) -->
+                <div style="display:flex;gap:1rem;justify-content:center;margin:1rem 0 0.6rem 0;">
+                    <button id="start-festa-wizard" class="cta-button" type="button">Montar meu bolo</button>
+                </div>
+
+                <!-- Mantemos apenas as imagens e o botão de iniciar o wizard. -->
+                <p class="festa-note">*Papelaria e decoração: Valor a combinar.</p>
+                
+                <!-- Wizard modal (stepper) -->
+                <div id="festa-wizard-overlay" class="festa-wizard-overlay" aria-hidden="true">
+                    <div class="festa-wizard" role="dialog" aria-modal="true" aria-labelledby="festa-wizard-title">
+                        <header>
+                            <h3 id="festa-wizard-title">Montar seu bolo — Passo <span id="wizard-step-number">1</span> de 6</h3>
+                            <button id="wizard-close" aria-label="Fechar" class="order-button" type="button">Fechar</button>
+                        </header>
+                        <div class="wizard-progress" aria-hidden="true"><i id="wizard-progress-bar"></i></div>
+
+                        <!-- Step 1: Tamanho -->
+                        <div class="wizard-step" data-step="1">
+                            <p>Escolha o tamanho do bolo</p>
+                            <div class="choice-grid" id="wizard-step-size">
+                                <label class="festa-option-card wizard-option" data-weight="1">
+                                    <input type="radio" name="wiz-tamanho" class="wiz-input" hidden>
+                                    1 kg <span class="price">(base)</span>
+                                </label>
+                                <label class="festa-option-card wizard-option" data-weight="1.5">
+                                    <input type="radio" name="wiz-tamanho" class="wiz-input" hidden>
+                                    1.5 kg
+                                </label>
+                                <label class="festa-option-card wizard-option" data-weight="2">
+                                    <input type="radio" name="wiz-tamanho" class="wiz-input" hidden>
+                                    2 kg
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Massa -->
+                        <div class="wizard-step" data-step="2">
+                            <p>Escolha a massa</p>
+                            <div class="choice-grid" id="wizard-step-massa">
+                                <label class="festa-option-card wizard-option" data-value="Baunilha">
+                                    <input type="radio" name="wiz-massa" class="wiz-input" hidden>Baunilha
+                                </label>
+                                <label class="festa-option-card wizard-option" data-value="Chocolate">
+                                    <input type="radio" name="wiz-massa" class="wiz-input" hidden>Chocolate
+                                </label>
+                                <label class="festa-option-card wizard-option" data-value="Red Velvet">
+                                    <input type="radio" name="wiz-massa" class="wiz-input" hidden>Red Velvet
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Recheio -->
+                        <div class="wizard-step" data-step="3">
+                            <p>Escolha o recheio</p>
+                            <div class="choice-grid" id="wizard-step-recheio">
+                                <label class="festa-option-card wizard-option" data-value="Brigadeiro Branco">
+                                    <input type="radio" name="wiz-recheio" class="wiz-input" hidden>Brigadeiro Branco
+                                </label>
+                                <label class="festa-option-card wizard-option" data-value="Brigadeiro Tradicional">
+                                    <input type="radio" name="wiz-recheio" class="wiz-input" hidden>Brigadeiro Tradicional
+                                </label>
+                                <label class="festa-option-card wizard-option" data-value="Doce de Leite">
+                                    <input type="radio" name="wiz-recheio" class="wiz-input" hidden>Doce de Leite
+                                </label>
+                                <label class="festa-option-card wizard-option" data-value="Bicho de pé">
+                                    <input type="radio" name="wiz-recheio" class="wiz-input" hidden>Bicho de pé
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Cobertura -->
+                        <div class="wizard-step" data-step="4">
+                            <p>Escolha a cobertura</p>
+                            <div class="choice-grid" id="wizard-step-cobertura">
+                                <label class="festa-option-card wizard-option" data-price-per-kg="85.90" data-value="Chantininho">
+                                    <input type="radio" name="wiz-cobertura" class="wiz-input" hidden>Chantininho <span class="price">R$ 85,90/kg</span>
+                                </label>
+                                <label class="festa-option-card wizard-option" data-price-per-kg="99.90" data-value="Ganache">
+                                    <input type="radio" name="wiz-cobertura" class="wiz-input" hidden>Ganache <span class="price">R$ 99,90/kg</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Extras -->
+                        <div class="wizard-step" data-step="5">
+                            <p>Deseja turbinar seu bolo?</p>
+                            <div class="choice-grid" id="wizard-step-extras">
+                                <label class="festa-option-card wizard-option" data-price="12" data-value="Creme de Avelã">
+                                    <input type="checkbox" name="wiz-extras" class="wiz-input" hidden>Creme de Avelã <span class="price">R$ 12,00</span>
+                                </label>
+                                <label class="festa-option-card wizard-option" data-price="8" data-value="Geleia">
+                                    <input type="checkbox" name="wiz-extras" class="wiz-input" hidden>Geleia <span class="price">R$ 8,00</span>
+                                </label>
+                                <label class="festa-option-card wizard-option" data-price="10" data-value="Crocante">
+                                    <input type="checkbox" name="wiz-extras" class="wiz-input" hidden>Crocante <span class="price">R$ 10,00</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 6: Summary -->
+                        <div class="wizard-step" data-step="6">
+                            <p>Resumo do pedido</p>
+                            <div id="wizard-summary" style="margin-top:.5rem; font-weight:700"></div>
+                            <div id="wizard-total" style="margin-top:.8rem; font-size:1.25rem; font-weight:900; color:var(--cor-primaria)"></div>
+                        </div>
+
+                        <div class="wizard-nav">
+                            <button id="wizard-back" class="order-button" type="button">Voltar</button>
+                            <button id="wizard-next" class="festa-submit-button" type="button">Confirmar</button>
+                        </div>
                     </div>
                 </div>
-                <p class="festa-note">*Papelaria e decoração: Valor a combinar.</p>
             </div>
         </section>
         </div>
