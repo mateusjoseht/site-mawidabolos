@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap');
 
+/* Bonello: se você tiver os arquivos webfont, coloque em /fonts e o @font-face abaixo irá carregá-los.
+     Se preferir que eu faça o upload, envie os .woff/.woff2 ou me diga onde buscar. */
+@font-face {
+    font-family: 'Bonello';
+    /* Using the OTF you added to /fonts: Bonello-Regular.otf */
+    src: url('../fonts/Bonello-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* Variáveis Globais de Cor */
 :root {
   --cor-primaria: #c42d46;    /* Rosa/Vermelho do Logótipo */
@@ -25,7 +36,8 @@ footer { margin-top: auto; flex-shrink: 0; }
 body {
     background-color: var(--cor-secundaria); 
     color: var(--cor-texto-escuro);
-    font-family: Arial, Helvetica, sans-serif;
+    /* Use Playfair Display as the main site font for consistent serif look (fallbacks included) */
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
     animation: pageFadeIn 420ms ease both;
 }
 
@@ -69,6 +81,8 @@ header {
     color: var(--cor-texto-claro);
     text-decoration: none;
     font-weight: 750;
+    /* Revert navbar to a clean sans-serif for better legibility */
+    font-family: Arial, Helvetica, sans-serif;
     transition: color 0.3s ease;
 }
 
@@ -375,11 +389,25 @@ footer {
     margin-top: 0.5rem;
 }
 
-/* Use a more distinctive serif for product headings and tabs */
-.product-header p,
+/* Typography rules
+   - Titles: use Bonello (import via @font-face). If the Bonello webfont files are missing,
+     browsers will fall back to Playfair Display so the look remains consistent.
+   - Navigation / subtitles / dropdowns: use Playfair Display so they match across site. */
+
+/* Titles / display headings */
+.hero-title,
+h1, h2, h3, h4,
 .product-category h2,
-.tab-button,
 .product-card h4 {
+    font-family: 'Bonello', 'Playfair Display', Georgia, 'Times New Roman', serif;
+    /* Titles should stand out — keep weight heavy when available */
+}
+
+/* Navigation, subtitles and descriptive text use Playfair Display for consistency */
+.nav-menu a,
+.product-header p,
+.product-card p,
+.tab-button {
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 
@@ -538,6 +566,7 @@ footer {
    ================================= */
 /* Estilo para o novo Dropdown (<select>) */
 
+
 .product-card .product-options {
     /* Visible, subtly bordered dropdown so users know it's interactive */
     display: block;
@@ -555,12 +584,11 @@ footer {
     -moz-appearance: none;
     cursor: pointer;
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
-    /* Add a subtle chevron to indicate dropdown affordance */
-    background-image: linear-gradient(45deg, transparent 50%, var(--cor-primaria) 50%),
-                      linear-gradient(135deg, var(--cor-primaria) 50%, transparent 50%);
-    background-position: calc(100% - 1rem) calc(1em + 2px), calc(100% - 0.8rem) calc(1em + 2px);
-    background-size: 6px 6px, 6px 6px;
+    /* Add a clearer chevron using an embedded SVG (better consistency across browsers) */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><polygon fill='%23C42D46' points='6,8 0,0 12,0'/></svg>");
     background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px 8px;
     padding-right: 2.4rem; /* make room for chevron */
 }
 
