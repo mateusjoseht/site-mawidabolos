@@ -23,9 +23,10 @@ footer { margin-top: auto; flex-shrink: 0; }
 .footer-bottom { width: 100%; }
 
 body {
-    background-color: var(--cor-secundaria); 
+    background-color: var(--cor-secundaria);
     color: var(--cor-texto-escuro);
-    font-family: Arial, Helvetica, sans-serif;
+    /* Use Bonello site-wide as requested (fallbacks included) */
+    font-family: 'Bonello', 'Playfair Display', Arial, Helvetica, sans-serif;
     animation: pageFadeIn 420ms ease both;
 }
 
@@ -133,12 +134,16 @@ header {
     font-size: 3rem; /* Tamanho do título principal */
     color: var(--cor-primaria); /* Cor rosa-forte */
     margin-bottom: 1rem;
+    /* Use Bonello (fonte do cabeçalho que você anexou) */
+    font-family: 'Bonello', 'Playfair Display', Georgia, 'Times New Roman', serif;
+    letter-spacing: 0.4px;
 }
 .hero-subtitle {
     font-size: 1.6rem; /* Aumentado para maior legibilidade */
     margin-bottom: 2rem;
-    font-weight: 800; /* Mais grosso, semelhante ao título principal */
+    font-weight: 800; /* Mais grosso, legível */
     color: var(--cor-primaria); /* tornar mais viva/mais clara conforme pedido */
+    font-family: 'Bonello', 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 /* =================================
    BOTÃO CTA (Call to Action)
@@ -530,6 +535,225 @@ footer {
     100% { transform: translateY(0); }
 }
 .festa-thumb { animation: floatSmall 6s ease-in-out infinite; }
+
+/* Configurador de Bolo: estilo de inputs ocultos e labels clicáveis */
+.festa-form .festa-input {
+    position: absolute !important;
+    left: -9999px !important;
+    /* visually hidden but available to assistive tech */
+}
+
+.festa-form .choice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.9rem;
+    margin-top: 0.75rem;
+}
+
+/* Reuse festa-option-card look but make labels clickable and focusable */
+.festa-form label.festa-option-card {
+    display: block;
+    cursor: pointer;
+    padding: 1.1rem 1rem;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #ffffff 0%, #fffaf6 100%);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, background 220ms ease;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.festa-form label.festa-option-card .price {
+    display: block;
+    margin-top: 0.35rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    font-size: 0.95rem;
+}
+
+/* When the hidden input is checked, style the following label as active */
+.festa-form .festa-input:checked + label.festa-option-card {
+    border-color: transparent;
+    background: linear-gradient(180deg, rgba(196,45,70,0.06) 0%, rgba(255,250,246,1) 100%);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+/* Add a colored accent stripe on the left when selected */
+.festa-form .festa-input:checked + label.festa-option-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, var(--cor-primaria), #a32439);
+}
+
+/* Checkmark in top-right when selected */
+.festa-form .festa-input:checked + label.festa-option-card::after {
+    content: '✓';
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    background: rgba(255,255,255,0.95);
+    color: var(--cor-primaria);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
+
+/* Keyboard focus on the label (for accessibility) */
+.festa-form label.festa-option-card:focus {
+    outline: 3px solid rgba(196,45,70,0.18);
+    outline-offset: 3px;
+}
+
+/* Make legend slightly bolder */
+.festa-form legend {
+    font-weight: 800;
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    color: var(--cor-texto-escuro);
+}
+
+/* Improve the submit button appearance to match order-button */
+.festa-submit-button {
+    display: inline-block;
+    width: calc(100% - 2rem);
+    margin: 0.5rem 1rem 1rem 1rem;
+    padding: 0.85rem 1.1rem;
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, #a32439 100%);
+    color: var(--cor-texto-claro);
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.festa-total {
+    max-width: 420px;
+    margin: 1.1rem auto;
+    text-align: center;
+    font-size: 1.25rem;
+    background: linear-gradient(90deg, rgba(196,45,70,0.06), rgba(163,36,57,0.03));
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(196,45,70,0.12);
+    font-weight: 900;
+    color: var(--cor-primaria);
+}
+.festa-submit-button:hover, .festa-submit-button:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    filter: brightness(1.06);
+}
+
+/* FESTA WIZARD (modal/stepper) */
+.festa-wizard-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+.festa-wizard-overlay.open { display: flex; }
+.festa-wizard {
+    width: 96%;
+    max-width: 680px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    position: relative;
+}
+.festa-wizard header {
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:0.5rem;
+    /* menos agressivo: background suave e padding para o topo do modal */
+    background: linear-gradient(90deg, rgba(196,45,70,0.06), rgba(196,45,70,0.03));
+    padding: 0.9rem 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid rgba(196,45,70,0.06);
+}
+.festa-wizard h3 { margin:0; font-size:1.25rem; }
+
+/* Centralizar a nota (papelaria/decoração) e garantir legibilidade */
+.festa-note { text-align: center; }
+
+/* Cursor pointer claro para o botão de abrir o wizard */
+.cta-button { cursor: pointer; }
+.wizard-step { display: none; }
+.wizard-step.active { display:block; animation: fadeIn 220ms ease both; }
+@keyframes fadeIn { from { opacity:0; transform: translateY(6px)} to { opacity:1; transform:none }}
+.wizard-nav { display:flex; gap:0.6rem; justify-content:flex-end; margin-top:1rem; }
+.wizard-nav button { min-width:110px }
+.wizard-option {
+    display: block;
+    margin: 0.6rem 0;
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #ffffff 0%, #fffaf6 100%);
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+    cursor: pointer; /* make affordance clear */
+    font-weight: 700;
+}
+
+.wizard-option:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
+.wizard-option:focus { outline: 3px solid rgba(196,45,70,0.16); outline-offset: 2px; }
+
+/* selected visual */
+.wizard-option.selected {
+    background: linear-gradient(180deg, rgba(196,45,70,0.06) 0%, rgba(255,250,246,1) 100%);
+    border-color: transparent;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+    position: relative;
+}
+.wizard-option.selected::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, var(--cor-primaria), #a32439);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.wizard-option.selected::after {
+    content: '✓';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: rgba(255,255,255,0.98);
+    color: var(--cor-primaria);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+}
+.wizard-progress { height:6px; background:rgba(0,0,0,0.06); border-radius:999px; overflow:hidden; margin-bottom:0.9rem }
+.wizard-progress > i { display:block; height:100%; background:linear-gradient(90deg,var(--cor-primaria),#a32439); width:0%; transition:width 260ms ease }
+
 
 /* (Consolidated order button styles appear later) */
 
